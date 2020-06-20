@@ -15,13 +15,23 @@ module.exports = function (app) {
 	//Functionality to add new note using post method
 	app.post('/api/notes', function (req, res) {
 		let addNote = req.body;
-
+		for (let i = 0; i < jsonData.length; i++) {
+			addNote.id = i + 1;
+		}
 		console.log(addNote);
 
-		writeFileAsync('./db/db.json', addNote).then(function () {
-			console.log('Note Succesfully Added to Json File');
-		});
-
+		jsonData.push(addNote);
+		console.log(jsonData);
 		res.json(addNote);
+		let jsonArray = JSON.stringify(jsonData);
+
+		writeFileAsync('./db/db.json', jsonArray).then(function () {
+			console.log('JSON DB Notes Array Updated');
+		});
+	});
+	//Functionality to delete the posts using the trashcan icon
+	app.Delete('/api/notes', function (req, res) {
+		//
+		//
 	});
 };
