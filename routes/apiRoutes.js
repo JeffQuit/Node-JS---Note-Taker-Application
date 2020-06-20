@@ -18,6 +18,10 @@ module.exports = function (app) {
 
 		console.log(addNote);
 
+		writeFileAsync('./db/db.json', addNote).then(function () {
+			console.log('Note Succesfully Added to Json File');
+		});
+
 		res.json(addNote);
 	});
 };
