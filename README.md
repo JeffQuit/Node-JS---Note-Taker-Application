@@ -4,7 +4,9 @@
 
 ## Description
 
-Project 11 tasks the student with building an express server using Node.js
+Project 11 tasks the student with building an express server using Node.js that takes an already build note taker front and and ties it to the server functionality created by the student. This project
+challenged the student with figuring out how to use the express app methods to retreive information from a JSON file, post new notes using the UI, and delete existing notes from the UI in the server
+logic. This project solved the problem of how does everything come together in a full stack application with the relationship to the UI and database.
 
 ## Table of Contents
 
