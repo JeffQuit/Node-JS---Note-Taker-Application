@@ -4,6 +4,7 @@ const path = require('path');
 const util = require('util');
 const fs = require('fs');
 const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = function (app) {
 	//
@@ -18,20 +19,29 @@ module.exports = function (app) {
 		for (let i = 0; i < jsonData.length; i++) {
 			addNote.id = i + 1;
 		}
-		console.log(addNote);
-
 		jsonData.push(addNote);
-		console.log(jsonData);
 		res.json(addNote);
 		let jsonArray = JSON.stringify(jsonData);
-
+		// Writes updated array back to the db.Json file
 		writeFileAsync('./db/db.json', jsonArray).then(function () {
 			console.log('JSON DB Notes Array Updated');
 		});
 	});
+
 	//Functionality to delete the posts using the trashcan icon
-	app.Delete('/api/notes', function (req, res) {
-		//
-		//
+	app.delete('/api/notes/:id', function (req, res) {
+		//Read db.JSON file so we can find what needs to be removed using the delete ID
+		readFileAsync('./db/db.json', 'utf8').then(function (data) {
+			console.log(data);
+			let arrayParse = JSON.parse(data);
+			let deletedArray = arrayParse.filter((target) => target.id != req.params.id);
+			let jsonArray = JSON.stringify(deletedArray);
+
+			//*Writes Updated db.JSON file after note is removed
+			writeFileAsync('./db/db.json', jsonArray).then(function () {
+				console.log('JSON DB Notes Array Updated With Deleted Note');
+			});
+		});
+		res.json(jsonData);
 	});
 };
