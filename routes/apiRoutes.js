@@ -10,7 +10,10 @@ module.exports = function (app) {
 	//
 	//Prints notes from db.JSON to notes area on /notes page
 	app.get('/api/notes', function (req, res) {
-		return res.json(jsonData);
+		readFileAsync('./db/db.json', 'utf8').then(function (data) {
+			let notes = JSON.parse(data);
+			res.json(notes);
+		});
 	});
 
 	//Functionality to add new note using post method
