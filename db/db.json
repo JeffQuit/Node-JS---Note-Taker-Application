@@ -1,8 +1,8 @@
 [
 	{ "title": "Test Title", "text": "Test text", "id": 0 },
-	{ "title": "asdfasdfasdfasdf", "text": "asdfasdfasdf", "id": 1 },
-	{ "title": "asdfasdfasdfasdfas", "text": "asdfasdfasdfasdf", "id": 2 },
-	{ "title": "asdfasdfasdfasdfas", "text": "asdfasdfasdfasdf", "id": 3 },
-	{ "title": "asdfasdfasdfasdfas", "text": "asdfasdfasdfasdf", "id": 4 },
-	{ "title": "asdfasdfasdfasdfas", "text": "asdfasdfasdfasdf", "id": 5 }
+	{ "title": "Note 1", "text": "Test 1", "id": 1 },
+	{ "title": "Note 2", "text": "Test 2", "id": 2 },
+	{ "title": "Note 3", "text": "Test 3", "id": 3 },
+	{ "title": "Note 4", "text": "Test 4", "id": 4 },
+	{ "title": "Note 5", "text": "Test 5", "id": 5 }
 ]
